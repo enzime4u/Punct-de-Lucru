@@ -1,15 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, ScrollView, Text, View } from "react-native";
 
 import Produs from "./Produs";
 
 import image from "./image.jpg";
+console.log(image);
 
 const data = [
   {
     id: "11a",
     denumire: "Produs1",
-    poza: image,
+    poza: `${image}`,
     um: "grame",
     gramaj: 150,
     stocMeu: 3,
@@ -18,7 +19,7 @@ const data = [
   {
     id: "11s",
     denumire: "Produs2",
-    poza: null,
+    poza: `${image}`,
     um: "grame",
     gramaj: 100,
     stocMeu: 2,
@@ -27,7 +28,7 @@ const data = [
   {
     id: "11b",
     denumire: "Produs3",
-    poza: null,
+    poza: `${image}`,
     um: "grame",
     gramaj: 100,
     stocMeu: 2,
@@ -77,6 +78,15 @@ const data = [
     gramaj: 100,
     stocMeu: 2,
     stocDep: 1
+  },
+  {
+    id: "11f32312313",
+    denumire: "Produs9",
+    poza: null,
+    um: "grame",
+    gramaj: 100,
+    stocMeu: 2,
+    stocDep: 1
   }
 ];
 
@@ -87,6 +97,7 @@ export default function Produse() {
         <Produs
           key={item.id}
           denumire={item.denumire}
+          poza={item.poza}
           um={item.um}
           gramaj={item.gramaj}
         />
@@ -94,13 +105,14 @@ export default function Produse() {
     </View>
   );
 }
-const width = "75%";
+const width = "70%";
 
 const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
-    width: width
+    width: "70%",
+    justifyContent: "space-around"
   }
 });

@@ -4,11 +4,9 @@ import { StyleSheet, Text, View } from "react-native";
 export default function ListaComanda() {
   return (
     <View style={styles.container}>
-      <Text>Lista Comanda</Text>
-      <Text>Lista Comanda</Text>
-      <Text>Lista Comanda</Text>
-      <Text>Lista Comanda</Text>
-      <Text>Lista Comanda</Text>
+      <View style={styles.header}>
+        <Text>Lista Comanda</Text>
+      </View>
     </View>
   );
 }
@@ -19,8 +17,14 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     borderStyle: "solid",
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: "#000",
-    width: width
+    width: "25%",
+    margin: 0,
+    padding: 0,
+    justifyContent: "space-around"
+  },
+  header: {
+    alignContent: "stretch"
   }
 });

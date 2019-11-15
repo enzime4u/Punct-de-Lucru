@@ -13,8 +13,8 @@ export default function Produs({
   return (
     <View style={styles.container}>
       <Text style={styles.denumire}>{denumire}</Text>
-      <Image style={{ width: 100, height: 100 }} source={{ uri: poza }} />
-      <View>
+      <Image style={{ width: 150, height: 150 }} source={{ uri: `${poza}` }} />
+      <View style={styles.footer}>
         <Text style={styles.gramaj}>{gramaj}</Text>
         <Text style={styles.um}>{um}</Text>
       </View>
@@ -27,20 +27,20 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     backgroundColor: "pink",
-    marginLeft: 3,
-    marginRight: 3,
-    marginTop: 3
+    width: "30%",
+    marginTop: 10,
+    justifyContent: "center"
+  },
+  footer: {
+    justifyContent: "center"
   },
   denumire: {
-    fontSize: 18,
-    textAlign: "center"
+    fontSize: 18
   },
   gramaj: {
-    fontSize: 8,
-    textAlign: "left"
+    fontSize: 8
   },
   um: {
-    fontSize: 8,
-    textAlign: "right"
+    fontSize: 8
   }
 });
