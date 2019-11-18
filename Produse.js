@@ -105,11 +105,11 @@ export default function Produse() {
     </View>
   );
 }
-const width = "70%";
 
 const styles = StyleSheet.create({
   container: {
     display: "flex",
+    marginTop: 12,
     flexDirection: "row",
     flexWrap: "wrap",
     width: "70%",

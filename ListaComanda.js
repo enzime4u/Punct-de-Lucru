@@ -6,12 +6,12 @@ export default function ListaComanda() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text>Lista Comanda</Text>
+        <View></View>
       </View>
     </View>
   );
 }
 
-const width = "25%";
 const styles = StyleSheet.create({
   container: {
     display: "flex",
