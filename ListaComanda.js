@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 1,
     borderColor: "#000",
-    width: "25%",
     margin: 0,
     padding: 0,
     justifyContent: "space-around"

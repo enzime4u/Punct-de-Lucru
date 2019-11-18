@@ -3,14 +3,15 @@ import { StyleSheet, ScrollView, Text, View } from "react-native";
 
 import Produs from "./Produs";
 
-import image from "./image.jpg";
-console.log(image);
+import Picture from "./image.jpg";
+
+const image = "image.jpg";
 
 const data = [
   {
     id: "11a",
     denumire: "Produs1",
-    poza: `${image}`,
+    poza: "./image.jpg",
     um: "grame",
     gramaj: 150,
     stocMeu: 3,
@@ -19,7 +20,7 @@ const data = [
   {
     id: "11s",
     denumire: "Produs2",
-    poza: `${image}`,
+    poza: image,
     um: "grame",
     gramaj: 100,
     stocMeu: 2,
@@ -28,7 +29,7 @@ const data = [
   {
     id: "11b",
     denumire: "Produs3",
-    poza: `${image}`,
+    poza: Picture,
     um: "grame",
     gramaj: 100,
     stocMeu: 2,
@@ -108,11 +109,10 @@ export default function Produse() {
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
     marginTop: 12,
+    flex: 3,
     flexDirection: "row",
     flexWrap: "wrap",
-    width: "70%",
     justifyContent: "space-around"
   }
 });

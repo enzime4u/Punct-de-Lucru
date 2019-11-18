@@ -13,7 +13,10 @@ export default function Produs({
   return (
     <View style={styles.container}>
       <Text style={styles.denumire}>{denumire}</Text>
-      <Image style={{ width: 150, height: 150 }} source={{ uri: `${poza}` }} />
+      <Image
+        style={{ width: 150, height: 150, alignSelf: "center" }}
+        source={{ uri: "http://www.reactnativeexpress.com/static/logo.png" }}
+      />
       <View style={styles.footer}>
         <Text style={styles.gramaj}>{gramaj}</Text>
         <Text style={styles.um}>{um}</Text>
@@ -29,18 +32,21 @@ const styles = StyleSheet.create({
     backgroundColor: "pink",
     width: "30%",
     marginTop: 10,
-    justifyContent: "center"
+    justifyContent: "center",
+    padding: 5
   },
   footer: {
-    justifyContent: "center"
+    flexDirection: "row",
+    justifyContent: "space-around"
   },
   denumire: {
-    fontSize: 18
+    fontSize: 24,
+    alignSelf: "center"
   },
   gramaj: {
-    fontSize: 8
+    fontSize: 12
   },
   um: {
-    fontSize: 8
+    fontSize: 12
   }
 });

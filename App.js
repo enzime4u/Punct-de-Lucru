@@ -9,16 +9,16 @@ export default function App() {
   const [modal, setModal] = useState(false);
   return (
     <View style={styles.container}>
-      {/* <Produse />
-      <ListaComanda /> */}
-      <ModalComanda />
+      <Produse />
+      <ListaComanda />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
-    flexDirection: "row"
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center"
   }
 });
