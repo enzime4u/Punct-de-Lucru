@@ -1,5 +1,7 @@
-import { Dispatch } from "./Provider.js";
-
 export default {
-  modal: { isOpen: false }
+  selected: null,
+  // cart item: { id: "", quantity: 0 }
+  cart: [],
+  products: [],
+  orders: []
 };

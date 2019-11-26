@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   StyleSheet,
   Button,
@@ -8,14 +8,15 @@ import {
   TouchableHighlight
 } from "react-native";
 
-export default function OrderModal({
-  currentItem,
-  items,
-  // we pass it as  a prop
-  incrementCurrentItem,
-  addItemToCart,
-  closeModal
-}) {
+import { useStore } from "../Provider";
+
+export default function OrderModal({ product, onClose }) {
+  const [state, dispatch] = useStore();
+  const cartEntry = state.cart
+    .filter(entry => entry.product.id == product.id)
+    .pop();
+  const [quantity, setQuantity] = useState(cartEntry ? cartEntry.quantity : 0);
+
   return (
     <View>
       <TouchableHighlight>
@@ -26,25 +27,21 @@ export default function OrderModal({
               <Button
                 title="-"
                 style={styles.button}
-                onPress={() =>
-                  incrementCurrentItem({ id: currentItem.id, step: -1 })
-                }
+                onPress={() => setQuantity(quantity > 0 ? quantity - 1 : 0)}
               />
-              <Text style={styles.number}>{currentItem.quantity}</Text>
+              <Text style={styles.number}>{quantity}</Text>
               <Button
                 title="+"
                 style={styles.button}
-                onPress={() =>
-                  incrementCurrentItem({ id: currentItem.id, step: 1 })
-                }
+                onPress={() => setQuantity(quantity + 1)}
               />
             </View>
             <Button
-              title="Adauga"
+              title={cartEntry ? "Update" : "Add"}
               style={styles.buttonNew}
               onPress={() => {
-                addItemToCart(currentItem);
-                closeModal();
+                dispatch({ type: "cart.update", data: { product, quantity } });
+                onClose();
               }}
             />
           </View>

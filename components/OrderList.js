@@ -1,24 +1,34 @@
 import React from "react";
 import { StyleSheet, Text, View, FlatList, Button } from "react-native";
+import { useStore } from "../Provider";
 
-export default function ListaComanda({ items, cart }) {
-  console.log(cart);
+export default function OrderList() {
+  const [state, dispatch] = useStore();
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Lista Comanda</Text>
       <FlatList
         style={styles.content}
-        data={Object.keys(cart).map(id => items[id])}
+        data={state.cart}
         renderItem={({ item }) => (
+          // item is Object
           <View style={styles.orderProductsView}>
-            <Text style={styles.productName}>{item.denumire}</Text>
-            <Text style={styles.productQty}>{cart[item.id]}</Text>
+            <Text style={styles.productName}>{item.product.denumire}</Text>
+            <Text style={styles.productQty}>{item.quantity}</Text>
           </View>
         )}
-        keyExtractor={item => item.id}
+        extraData={state}
+        keyExtractor={item => item.product.id}
       />
 
-      <Button style={styles.orderButton} title="Trimite Comanda"></Button>
+      <Button
+        style={styles.orderButton}
+        title="Trimite Comanda"
+        onPress={() => {
+          dispatch({ type: "orders.update", data: state.cart });
+        }}
+      />
     </View>
   );
 }
@@ -57,3 +67,11 @@ const styles = StyleSheet.create({
     color: "#ffffff"
   }
 });
+
+// Orders:
+// [
+//   {
+//     id: 213123,
+//     order: []
+//   },
+// ]

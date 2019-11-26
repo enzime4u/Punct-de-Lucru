@@ -8,10 +8,10 @@ import {
   TouchableOpacity
 } from "react-native";
 
-export default function Product({ id, denumire, poza, um, gramaj, showModal }) {
+export default function Product({ id, denumire, poza, um, gramaj, onPress }) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => console.log(id) || showModal(id)}>
+      <TouchableOpacity onPress={onPress}>
         <Text style={styles.denumire}>{denumire}</Text>
         <Image
           style={{ width: 150, height: 150, alignSelf: "center" }}

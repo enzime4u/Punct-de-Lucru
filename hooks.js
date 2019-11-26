@@ -1,4 +1,5 @@
-import React, { useReducer } from "react";
+import React, { useState, useReducer } from "react";
+import { orders } from "./Items";
 
 // APP - hook
 // call the hook before return ( in render)
@@ -43,13 +44,12 @@ export const useCart = () => {
   );
 
   return {
-    cart,
+    cart, // this is also order !!!
     addItemToCart
   };
 };
 
-export const useOrder = () => {
-  const [order, addOrderToDeposit] = useReducer((order, item) => ({
-    ...order
-  }));
-};
+//create useOrder
+// must declare order and addOrderToDeposit
+// order is a state var keeps the current order
+// addOrderToDeposit is a function that sends the currrent order to the orders array
