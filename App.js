@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, ScrollView, Text, View } from "react-native";
 
 import Products from "./components/Products";

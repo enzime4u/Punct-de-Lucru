@@ -22,8 +22,8 @@ export default function Products() {
               onPress={() => setSelected(product)}
               id={product.id}
               key={product.id}
-              denumire={product.denumire}
-              poza={product.poza}
+              name={product.name}
+              poza={product.picture}
               um={product.um}
               gramaj={product.gramaj}
             />

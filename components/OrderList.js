@@ -12,9 +12,8 @@ export default function OrderList() {
         style={styles.content}
         data={state.cart}
         renderItem={({ item }) => (
-          // item is Object
           <View style={styles.orderProductsView}>
-            <Text style={styles.productName}>{item.product.denumire}</Text>
+            <Text style={styles.productName}>{item.product.name}</Text>
             <Text style={styles.productQty}>{item.quantity}</Text>
           </View>
         )}

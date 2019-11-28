@@ -22,21 +22,42 @@ export default function reducer(previous, { type, data }) {
       break;
 
     case "orders.update":
+      const sendOrderURL = "https://mvctest.staging.psw.ro/";
+
+      // define a order var for each entry from the cart
+      const order = state.cart.map(entry => ({
+        id: entry.product.id,
+        quantity: entry.quantity
+      }));
+      // push new order to the orders
       state.orders.push({
-        id: "xxx",
-        products: state.cart
+        order
       });
+      // sending the data to database
+      fetch(sendOrderURL, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(order)
+      }).then(response => {
+        if (response.status === 200) {
+          console.log(response.status);
+        } else {
+          throw new Error("Something went wrong!!!!");
+        }
+      });
+
+      // re-set the cart
       state.cart = [];
       break;
 
     case "products.update":
       state.products = data;
       break;
-    default:
-      throw Error("App: command not found.");
-  }
 
-  console.log(state.orders);
+    default:
+      throw Error("App: action type not found.");
+  }
+  console.log("Total orders:", state.orders);
   return state;
 }
 

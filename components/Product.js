@@ -8,14 +8,14 @@ import {
   TouchableOpacity
 } from "react-native";
 
-export default function Product({ id, denumire, poza, um, gramaj, onPress }) {
+export default function Product({ id, name, poza, um, gramaj, onPress }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
-        <Text style={styles.denumire}>{denumire}</Text>
+        <Text style={styles.name}>{name}</Text>
         <Image
           style={{ width: 150, height: 150, alignSelf: "center" }}
-          source={poza}
+          source={{ uri: poza }}
         />
         <View style={styles.footer}>
           <Text style={styles.gramaj}>{gramaj}</Text>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     marginTop: 10
   },
-  denumire: {
+  name: {
     fontSize: 24,
     alignSelf: "center"
   },
