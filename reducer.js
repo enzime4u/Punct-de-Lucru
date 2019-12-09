@@ -22,29 +22,22 @@ export default function reducer(previous, { type, data }) {
       break;
 
     case "orders.update":
-      const sendOrderURL = "https://mvctest.staging.psw.ro/";
+      const sendOrderURL =
+        "https://mvctest.staging.psw.ro/application/save-order";
 
-      // define a order var for each entry from the cart
       const order = state.cart.map(entry => ({
         id: entry.product.id,
         quantity: entry.quantity
       }));
-      // push new order to the orders
-      state.orders.push({
-        order
-      });
-      // sending the data to database
+      state.orders.push({ order });
+
       fetch(sendOrderURL, {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(order)
-      }).then(response => {
-        if (response.status === 200) {
-          console.log(response.status);
-        } else {
-          throw new Error("Something went wrong!!!!");
-        }
-      });
+      })
+        .then(response => response.json())
+        .then(data => console.log("from data:", data));
 
       // re-set the cart
       state.cart = [];
@@ -57,7 +50,6 @@ export default function reducer(previous, { type, data }) {
     default:
       throw Error("App: action type not found.");
   }
-  console.log("Total orders:", state.orders);
   return state;
 }
 
